@@ -1,4 +1,4 @@
-
+---
 ## WORKFLOW1
 name: hello-world  ## Nombre del WorkFlow
 ## Activa el Workflow solo para Eventos push or pull request para la branch "main"
@@ -34,7 +34,7 @@ jobs: ## Un Workflow se compone of one or more jobs that can run sequentially or
           echo Hello World from ${{steps.ip.outputs.ipv4}}
           python hello-world.py
 
-
+---
 ## WORKFLOW2
 name: hello-world  ## Nombre del WorkFlow
 on: ## Activa el Workflow solo para Eventos push or pull request para la branch "main"
