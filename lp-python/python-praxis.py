@@ -1,7 +1,7 @@
-## 1) Hello World
+## 1) HELLO-WORLD
 print("Hello-World")
 
-## 2) Sumar 2 Numeros interactivamente
+## 2) SUMAR 2 NUMEROS INTERACTIVAMENTE
 ## WHILE
 def run():
     i = 0
@@ -19,7 +19,7 @@ def run():
 if __name__ == '__main__':
     run()
 
-## 3) Recorrer una frase con Bucles
+## 3) RECORRER UNA FRASE CON BUCLES
 ## FOR
 def run():
     command = "npm --version"
