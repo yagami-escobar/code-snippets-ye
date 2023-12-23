@@ -25,7 +25,7 @@ EOF
 
 ### 5) Vaciar archivos pesados con /dev/null
 
-``cat /dev/null > ERR.log``  <strong> --> Vaciar él contenido del archivo ERR.log(Redirigiendo null)  y actualizar la fecha del fichero.</strong>
+``cat /dev/null > ERR.log``  --> Vaciar él contenido del archivo ERR.log(Redirigiendo null)  y actualizar la fecha del fichero
 
 ``> access.log`` <strong> --> Vaciar él contenido de access.log</strong>
 
