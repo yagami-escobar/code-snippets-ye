@@ -1,4 +1,4 @@
-// 1) Hello-World
+//1) HELLO-WORLD
 package main
 
 import "fmt"
