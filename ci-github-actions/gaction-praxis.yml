@@ -1,0 +1,72 @@
+
+## WORKFLOW1
+name: hello-world  ## Nombre del WorkFlow
+## Activa el Workflow solo para Eventos push or pull request para la branch "main"
+## Especifica el trigger o triggers(Events) que hacen iniciar el workflow
+on: ## Evento → Cada vez qué hagamos un push correrá él workflow hola-mundo
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  
+  workflow_dispatch: # Permite ejecutar este workflow manualmente desde la Tab Acciones
+
+
+jobs: ## Un Workflow se compone of one or more jobs that can run sequentially or in parallel
+  build:  ## Nombre del Job
+    runs-on: ubuntu-latest  ## Runner -> Él Job correrá en un runner qué usa él OS Ubuntu Latest.
+    steps:  ## Lista de steps del Job build
+      
+      - name: Checkout Code         ## Hacer el Checkout del code
+      - uses: actions/checkout@v3   ## Uso el action actions/checkout
+
+      - name: Setup Go environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+
+      - name: Public IP
+        id: ip
+        uses: haythem/public-ip@v1.3  ## Uso el action haythem/public-ip
+
+      - name: Run a multi-line script
+        run: |
+          echo Hello World from ${{steps.ip.outputs.ipv4}}
+          python hello-world.py
+
+
+## WORKFLOW2
+name: hello-world  ## Nombre del WorkFlow
+on: ## Activa el Workflow solo para Eventos push or pull request para la branch "main"
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  
+  workflow_dispatch: # Permite ejecutar este workflow manualmente desde la Tab Acciones
+
+
+  jobs: ## Un Workflow se compone of one or more jobs that can run sequentially or in parallel
+    build:  ## Nombre del Job
+      runs-on: ubuntu-latest  ## Runner
+      steps:  ## Lista de steps del Job build
+        
+        - name: Checkout Code         ## Hacer el Checkout del code
+        - uses: actions/checkout@v3   ## Uso el action actions/checkout
+
+        - name: Setup Go environment
+          uses: actions/setup-go@v5.0.0
+          with:
+            go-version: 1.21.5
+
+        - name: Public IP
+          id: ip
+          uses: haythem/public-ip@v1.3  ## Uso el action haythem/public-ip
+
+        - name: Run a multi-line script
+          run: |
+            echo Hello World from ${{steps.ip.outputs.ipv4}}
+            go 
+
+
+
