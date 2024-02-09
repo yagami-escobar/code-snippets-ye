@@ -47,15 +47,8 @@ on: ## Activa el Workflow solo para Eventos push or pull request para la branch 
 
 
   jobs: ## Un Workflow se compone of one or more jobs that can run sequentially or in parallel
-    build:  ## Nombre del Job
-      runs-on: ubuntu-latest  ## Runner
-      steps:  ## Lista de steps del Job build
-        
-        - name: Checkout Code         ## Hacer el Checkout del code
-        - uses: actions/checkout@v3   ## Uso el action actions/checkout
-
-        - name: Setup Go environment
-          uses: actions/setup-go@v5.0.0
+    build:---
+## WORKFLOW2uses: actions/setup-go@v5.0.0
           with:
             go-version: 1.21.5
 
@@ -69,4 +62,21 @@ on: ## Activa el Workflow solo para Eventos push or pull request para la branch 
             go 
 
 
+--- 
+## WORKFLOW3
+Events:
+on: push
+
+-------------------------------------
+Runner: ubuntu-latest
+-------------------------------------
+JOB: chek-bats-version
+Step 1: Check out repository
+uses: actions/checkout@v2
+Step 2: Install NodeJS					→ Instala y configura Node en él servidor para correr la app en él ejemplo.
+uses: actions/setup-node@v2
+Step 3: Install Bats					→ Instala una librería con npm
+run: npm install -g bats
+Step 2: Run bats					→ Corre bats
+run: bats -v
 
