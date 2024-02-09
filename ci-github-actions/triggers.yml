@@ -1,0 +1,47 @@
+--- # PUSH
+on:  # Acapara los triggers de este workflow
+  push:  # El tipo de trigger
+    branches:
+      - 'main'  
+      - 'releases/**'
+    paths:
+      - '**.js'  # El Workflow se activa cuando se hace un Push de un Commit sobre cualquier archivo JS que vaya a la rama main o releases/**
+
+--- # PR
+on:
+  pull_request:
+    types:
+      - [opened, labeled]  # El Workflow se activara cada vez que se habra o agreguen una label a un PR
+    branches:
+      - 'releases/**'
+    paths:
+      - '**.js'
+      
+--- # ISSUES
+on:
+  issues:
+    types: [opened, edited, closed] # El Workflow se activara (se ejecutaran los jobs) cada vez que se abra, edite o cierre un comentario.
+
+
+--- # ISSUE_COMMENT
+on:
+  issue_comment:
+    types: [created, deleted]
+
+on: issue_comment
+jobs:
+  pr_commented:
+    name: PR comment
+    if: ${{ github.event.issue.pull_request }}
+
+--- # WORKFLOW_DISPATCH
+
+
+--- # SCHEDULE
+on:
+  schedule:
+    - cron: '30 5,17 * * *' # Correra a los 30min de las 5 y 17 horas, Any day of the month, Any Month and any day of the week
+
+    # *(Minuto: 0-59) *(Hora: 0-23) *(Day: 1-31) *(Month:1-12 o JAN-DEC) *(Day of the WeeK: 0-6 o SUN-SAT)
+
+    
